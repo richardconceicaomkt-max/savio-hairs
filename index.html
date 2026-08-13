@@ -34,7 +34,6 @@
     "name":"Sávio Figueiredo — Spettacolo Salon",
     "description":"Especialista em transformações capilares premium: loiras, ruivas, morena iluminada, cacheadas e cortes femininos, com diagnóstico individual em cada atendimento.",
     "telephone":"+55 11 97044-6478",
-    "priceRange":"[PREENCHER: FAIXA DE PREÇO, EX. $$$]",
     "image":["images/IMG_0987-1400.jpg","images/IMG_1214-1400.jpg"],
     "address":{"@type":"PostalAddress","streetAddress":"Rua Coronel Diogo, 364","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"01545-000","addressCountry":"BR"},
     "areaServed":[{"@type":"Place","name":"Aclimação"},{"@type":"Place","name":"Vila Mariana"},{"@type":"Place","name":"São Paulo"}],
@@ -55,11 +54,17 @@
     <nav class="desktop-nav" aria-label="Navegação principal">
       <a href="#especialidades">Especialidades</a><a href="#resultados">Resultados</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
     </nav>
+    <div class="language-switcher" role="group" aria-label="Idioma">
+      <button class="active" type="button" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
     <a class="header-cta js-whatsapp" href="#contato">Agendar horário <span aria-hidden="true">↗</span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu"><span></span><span></span></button>
   </header>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Navegação móvel">
     <a href="#especialidades">Especialidades</a><a href="#resultados">Resultados</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
+    <div class="mobile-languages" role="group" aria-label="Idioma"><button type="button" data-lang="pt">PT</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="es">ES</button></div>
   </nav>
 
   <main id="conteudo">
@@ -108,7 +113,7 @@
     <section class="gallery section-sand" id="resultados">
       <div class="section-heading reveal"><p class="eyebrow">TRANSFORMAÇÕES REAIS</p><h2>Resultados que<br><em>falam por si.</em></h2></div>
       <div class="filters reveal" role="group" aria-label="Filtrar galeria">
-        <button class="active" data-filter="all">Todos</button><button data-filter="loiras">Loiras</button><button data-filter="morenas">Morenas</button><button data-filter="ruivas">Ruivas</button><button data-filter="cortes">Cortes</button>
+        <button class="active" data-filter="all">Todos</button><button data-filter="loiras">Loiras</button><button data-filter="morenas">Morenas</button><button data-filter="ruivas">Ruivas</button><button data-filter="cacheadas">Cacheadas</button><button data-filter="cortes">Cortes</button>
       </div>
       <div class="gallery-grid">
         <figure class="gallery-item reveal" data-category="loiras">
@@ -131,9 +136,9 @@
           <picture><source type="image/webp" srcset="images/IMG_3133-500.webp 500w, images/IMG_3133-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/IMG_3133-1000.jpg" srcset="images/IMG_3133-500.jpg 500w, images/IMG_3133-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1400" alt="Corte feminino longo com camadas e movimento" loading="lazy" decoding="async"></picture>
           <figcaption><b>Camadas fluidas</b><small>CORTES</small></figcaption>
         </figure>
-        <figure class="gallery-item reveal" data-category="ruivas">
-          <picture><source type="image/webp" srcset="images/IMG_4963-500.webp 500w, images/IMG_4963-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/IMG_4963-1000.jpg" srcset="images/IMG_4963-500.jpg 500w, images/IMG_4963-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1400" alt="Cabelo acobreado longo com ondas" loading="lazy" decoding="async"></picture>
-          <figcaption><b>Cobre intenso</b><small>RUIVAS</small></figcaption>
+        <figure class="gallery-item reveal" data-category="morenas">
+          <picture><source type="image/webp" srcset="images/IMG_4963-500.webp 500w, images/IMG_4963-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/IMG_4963-1000.jpg" srcset="images/IMG_4963-500.jpg 500w, images/IMG_4963-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1400" alt="Morena iluminada chocolate com ondas longas" loading="lazy" decoding="async"></picture>
+          <figcaption><b>Chocolate intenso</b><small>MORENA ILUMINADA</small></figcaption>
         </figure>
         <figure class="gallery-item reveal" data-category="morenas">
           <picture><source type="image/webp" srcset="images/IMG_4959-500.webp 500w, images/IMG_4959-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/IMG_4959-1000.jpg" srcset="images/IMG_4959-500.jpg 500w, images/IMG_4959-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1400" alt="Morena iluminada chocolate com ondas" loading="lazy" decoding="async"></picture>
@@ -147,6 +152,40 @@
           <picture><source type="image/webp" srcset="images/IMG_3677-500.webp 500w, images/IMG_3677-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/IMG_3677-1000.jpg" srcset="images/IMG_3677-500.jpg 500w, images/IMG_3677-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="669" alt="Corte feminino longo em camadas" loading="lazy" decoding="async"></picture>
           <figcaption><b>Forma e leveza</b><small>CORTES</small></figcaption>
         </figure>
+        <figure class="gallery-item reveal" data-category="ruivas">
+          <picture><source type="image/webp" srcset="images/ruiva-cherry-03-500.webp 500w, images/ruiva-cherry-03-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/ruiva-cherry-03-1000.jpg" srcset="images/ruiva-cherry-03-500.jpg 500w, images/ruiva-cherry-03-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1400" alt="Ruivo cherry intenso com camadas longas e acabamento brilhante" loading="lazy" decoding="async"></picture>
+          <figcaption><b>Cherry intenso</b><small>RUIVAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal gallery-extra hidden" data-category="ruivas">
+          <picture><source type="image/webp" srcset="images/ruiva-cherry-01-500.webp 500w, images/ruiva-cherry-01-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/ruiva-cherry-01-1000.jpg" srcset="images/ruiva-cherry-01-500.jpg 500w, images/ruiva-cherry-01-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1400" alt="Cabelo ruivo cherry visto de frente" loading="lazy" decoding="async"></picture><figcaption><b>Cherry profundo</b><small>RUIVAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal gallery-extra hidden" data-category="ruivas">
+          <picture><source type="image/webp" srcset="images/ruiva-cherry-02-500.webp 500w, images/ruiva-cherry-02-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/ruiva-cherry-02-1000.jpg" srcset="images/ruiva-cherry-02-500.jpg 500w, images/ruiva-cherry-02-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1400" alt="Detalhe da luminosidade do cabelo ruivo cherry" loading="lazy" decoding="async"></picture><figcaption><b>Cherry luminoso</b><small>RUIVAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal gallery-extra hidden" data-category="ruivas">
+          <picture><source type="image/webp" srcset="images/ruiva-cobre-01-500.webp 500w, images/ruiva-cobre-01-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/ruiva-cobre-01-1000.jpg" srcset="images/ruiva-cobre-01-500.jpg 500w, images/ruiva-cobre-01-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1333" alt="Ruivo acobreado longo com ondas polidas" loading="lazy" decoding="async"></picture><figcaption><b>Cobre luminoso</b><small>RUIVAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal gallery-extra hidden" data-category="ruivas">
+          <picture><source type="image/webp" srcset="images/ruiva-cobre-02-500.webp 500w, images/ruiva-cobre-02-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/ruiva-cobre-02-1000.jpg" srcset="images/ruiva-cobre-02-500.jpg 500w, images/ruiva-cobre-02-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1333" alt="Ruivo acobreado natural com movimento" loading="lazy" decoding="async"></picture><figcaption><b>Cobre natural</b><small>RUIVAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal gallery-extra hidden" data-category="ruivas">
+          <picture><source type="image/webp" srcset="images/ruiva-cobre-03-500.webp 500w, images/ruiva-cobre-03-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/ruiva-cobre-03-1000.jpg" srcset="images/ruiva-cobre-03-500.jpg 500w, images/ruiva-cobre-03-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1333" alt="Ruivo acobreado de frente com brilho uniforme" loading="lazy" decoding="async"></picture><figcaption><b>Cobre sob medida</b><small>RUIVAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal gallery-extra hidden" data-category="ruivas">
+          <picture><source type="image/webp" srcset="images/ruiva-vinho-01-500.webp 500w, images/ruiva-vinho-01-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/ruiva-vinho-01-1000.jpg" srcset="images/ruiva-vinho-01-500.jpg 500w, images/ruiva-vinho-01-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1333" alt="Ruivo vinho com corte longo em camadas" loading="lazy" decoding="async"></picture><figcaption><b>Vinho profundo</b><small>RUIVAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal gallery-extra hidden" data-category="ruivas">
+          <picture><source type="image/webp" srcset="images/ruiva-vinho-02-500.webp 500w, images/ruiva-vinho-02-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/ruiva-vinho-02-1000.jpg" srcset="images/ruiva-vinho-02-500.jpg 500w, images/ruiva-vinho-02-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1333" alt="Ruivo vinho com reflexos quentes" loading="lazy" decoding="async"></picture><figcaption><b>Vinho elegante</b><small>RUIVAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal gallery-extra hidden" data-category="ruivas">
+          <picture><source type="image/webp" srcset="images/ruiva-vinho-03-500.webp 500w, images/ruiva-vinho-03-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/ruiva-vinho-03-1000.jpg" srcset="images/ruiva-vinho-03-500.jpg 500w, images/ruiva-vinho-03-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1333" alt="Ruivo vinho visto em ângulo lateral" loading="lazy" decoding="async"></picture><figcaption><b>Vinho multidimensional</b><small>RUIVAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-category="cacheadas">
+          <picture><source type="image/webp" srcset="images/cacheada-01-500.webp 500w, images/cacheada-01-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/cacheada-01-1000.jpg" srcset="images/cacheada-01-500.jpg 500w, images/cacheada-01-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1500" alt="Cabelo cacheado longo com definição, volume e pontos de luz" loading="lazy" decoding="async"></picture><figcaption><b>Curvatura e definição</b><small>CACHEADAS</small></figcaption>
+        </figure>
+        <figure class="gallery-item reveal gallery-extra hidden" data-category="cacheadas">
+          <picture><source type="image/webp" srcset="images/cacheada-02-500.webp 500w, images/cacheada-02-1000.webp 1000w" sizes="(max-width:900px) 100vw, 33vw"><img src="images/cacheada-02-1000.jpg" srcset="images/cacheada-02-500.jpg 500w, images/cacheada-02-1000.jpg 1000w" sizes="(max-width:900px) 100vw, 33vw" width="1000" height="1400" alt="Sávio apresentando o resultado de um cabelo cacheado volumoso" loading="lazy" decoding="async"></picture><figcaption><b>Volume com identidade</b><small>CACHEADAS</small></figcaption>
+        </figure>
       </div>
       <a class="text-link gallery-link" href="https://www.instagram.com/saviohairs/" target="_blank" rel="noopener">Ver mais no Instagram <span>↗</span></a>
     </section>
@@ -154,8 +193,8 @@
     <section class="about section-light" id="sobre">
       <div class="about-photo real-photo reveal">
         <picture>
-          <source type="image/webp" srcset="images/IMG_1214-700.webp 700w, images/IMG_1214-1400.webp 1400w" sizes="(max-width:900px) 100vw, 45vw">
-          <img src="images/IMG_1214-1400.jpg" srcset="images/IMG_1214-700.jpg 700w, images/IMG_1214-1400.jpg 1400w" sizes="(max-width:900px) 100vw, 45vw" width="1400" height="2099" alt="Sávio Figueiredo finalizando o cabelo de uma cliente" loading="lazy" decoding="async">
+          <source type="image/webp" srcset="images/savio-retrato-700.webp 700w, images/savio-retrato-1400.webp 1206w" sizes="(max-width:900px) 100vw, 45vw">
+          <img src="images/savio-retrato-1400.jpg" srcset="images/savio-retrato-700.jpg 700w, images/savio-retrato-1400.jpg 1206w" sizes="(max-width:900px) 100vw, 45vw" width="1206" height="1435" alt="Sávio Figueiredo com diploma profissional de cabeleireiro" loading="lazy" decoding="async">
         </picture>
       </div>
       <div class="about-copy reveal">
@@ -198,7 +237,6 @@
         <details><summary>Quanto tempo dura uma transformação?<span>+</span></summary><p>Depende do ponto de partida e do resultado desejado. Transformações de cor costumam exigir algumas horas. O tempo exato é informado após a avaliação.</p></details>
         <details><summary>Como saber o valor do serviço?<span>+</span></summary><p>O orçamento é personalizado, pois considera comprimento, volume, histórico e técnica indicada. Envie fotos atuais pelo WhatsApp para uma primeira orientação.</p></details>
         <details><summary>Onde fica o salão?<span>+</span></summary><p>No Spettacolo Salone, Rua Coronel Diogo, 364, Aclimação, São Paulo — SP.</p></details>
-        <details><summary>Quais formas de pagamento são aceitas?<span>+</span></summary><p>[PREENCHER: FORMAS DE PAGAMENTO E REGRAS DE SINAL]</p></details>
       </div>
     </section>
 

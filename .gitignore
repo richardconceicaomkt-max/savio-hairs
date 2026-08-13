@@ -4,6 +4,8 @@ backup-*/
 
 # Dependências
 node_modules/
+.npm-cache/
+mobile-review-*/
 
 # Logs e arquivos temporários
 *.log
