@@ -16,3 +16,144 @@
 .about-photo{overflow:hidden}
 @media(max-width:900px){.gallery-grid{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:440px}}
 @media(max-width:560px){.gallery-grid{grid-auto-rows:350px}}
+
+/* ============================================================
+   LIQUID GLASS EDITORIAL — segunda evolução visual
+   Vidro fosco aplicado com critério: cabeçalho, botões, filtros
+   da galeria, cartão de contato e CTAs flutuantes. O restante do
+   site permanece nos planos sólidos cream/ink/sand originais.
+   ============================================================ */
+:root{
+  --glass-dark-bg:rgba(23,23,19,.82);
+  --glass-dark-bg-blur:rgba(23,23,19,.46);
+  --glass-light-bg:rgba(245,242,234,.94);
+  --glass-light-bg-blur:rgba(245,242,234,.78);
+  --glass-border-on-dark:rgba(255,255,255,.18);
+  --glass-border-on-light:rgba(23,23,19,.10);
+  --glass-highlight:rgba(255,255,255,.5);
+  --glass-shadow:0 10px 34px rgba(23,23,19,.16);
+  --glass-shadow-lg:0 22px 60px rgba(15,15,13,.22);
+  --radius-panel:26px;
+  --radius-pill:999px;
+  --ease-glass:cubic-bezier(.22,1,.36,1);
+}
+
+/* ---------- Cabeçalho flutuante ---------- */
+.header{
+  position:fixed;
+  top:16px;left:16px;right:16px;
+  height:66px;
+  border-radius:var(--radius-pill);
+  background:var(--glass-dark-bg);
+  border:1px solid var(--glass-border-on-dark);
+  box-shadow:var(--glass-shadow),inset 0 1px 0 rgba(255,255,255,.14);
+  transition:height .35s var(--ease-glass),background-color .35s ease,box-shadow .35s ease,padding .35s var(--ease-glass);
+}
+@supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  .header{background:var(--glass-dark-bg-blur);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%)}
+}
+.header.is-scrolled{height:56px;box-shadow:var(--glass-shadow-lg),inset 0 1px 0 rgba(255,255,255,.14)}
+#topo,section[id]{scroll-margin-top:96px}
+
+.mobile-menu{z-index:110;border-radius:0;color:var(--cream)}
+.menu-toggle{z-index:2}
+
+/* ---------- Hero imersivo em foto cheia ---------- */
+.hero{display:block}
+.hero-copy{
+  position:absolute;inset:auto 0 0 0;z-index:2;
+  max-width:640px;
+  padding:0 6vw 100px 8vw;
+  align-self:unset;
+}
+.hero-visual{
+  position:absolute;inset:0;z-index:0;
+  margin:0;height:100%;border-left:0;
+}
+.hero-visual img{object-position:56% 40%}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(100deg,rgba(23,23,19,.92) 0%,rgba(23,23,19,.74) 36%,rgba(23,23,19,.32) 60%,rgba(23,23,19,0) 82%),
+    linear-gradient(0deg,rgba(23,23,19,.62) 0%,rgba(23,23,19,0) 32%);
+}
+.scroll-cue{left:auto;right:2.4vw}
+
+/* ---------- Botões e CTAs flutuantes em vidro fosco ---------- */
+.button{border-radius:var(--radius-pill);border:1px solid transparent;box-shadow:var(--glass-shadow)}
+.button-light{
+  background:var(--glass-light-bg);
+  border-color:rgba(255,255,255,.6);
+  box-shadow:var(--glass-shadow),inset 0 1px 0 var(--glass-highlight);
+}
+@supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  .button-light{background:var(--glass-light-bg-blur);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%)}
+}
+.button:hover{transform:translateY(-2px) scale(1.01)}
+
+.whatsapp-float{
+  border-radius:var(--radius-pill);
+  background:var(--glass-light-bg);
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:var(--glass-shadow),inset 0 1px 0 var(--glass-highlight);
+}
+@supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  .whatsapp-float{background:var(--glass-light-bg-blur);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%)}
+}
+
+/* ---------- Filtros da galeria como painel segmentado ---------- */
+.filters{
+  display:inline-flex;gap:2px;margin:55px 0 35px;padding:6px;
+  border:1px solid var(--glass-border-on-light);border-radius:var(--radius-pill);
+  background:rgba(23,23,19,.045);
+}
+.filters button{padding:10px 18px;border-radius:var(--radius-pill);transition:background-color .25s ease,opacity .25s ease}
+.filters button.active{
+  background:rgba(255,255,255,.8);border-bottom:0;box-shadow:0 2px 10px rgba(23,23,19,.08);
+}
+@supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  .filters button.active{background:rgba(255,255,255,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+}
+
+/* ---------- Cartão de contato em vidro fosco ---------- */
+.contact-card{
+  border-radius:var(--radius-panel);
+  border:1px solid var(--glass-border-on-dark);
+  background:rgba(255,255,255,.07);
+  box-shadow:var(--glass-shadow-lg),inset 0 1px 0 rgba(255,255,255,.10);
+}
+@supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+  .contact-card{background:rgba(255,255,255,.05);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%)}
+}
+
+/* ---------- Cantos generosos nas fotos (fora do hero, que é full-bleed) ---------- */
+.gallery-item,.about-photo{border-radius:22px}
+
+/* ---------- Mobile ---------- */
+@media(max-width:900px){
+  .header{top:12px;left:12px;right:12px;height:58px;padding:0 20px}
+  .header.is-scrolled{height:52px}
+  .mobile-menu{border-radius:0}
+  .hero{min-height:100svh}
+  .hero-copy{padding:0 24px 130px}
+  .mobile-sticky{
+    left:12px;right:12px;bottom:12px;inset:auto 12px 12px;
+    border-radius:var(--radius-panel);
+    background:var(--glass-light-bg);
+    border:1px solid rgba(255,255,255,.6);
+    box-shadow:var(--glass-shadow-lg),inset 0 1px 0 var(--glass-highlight);
+    padding:0;
+  }
+  @supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
+    .mobile-sticky{background:var(--glass-light-bg-blur);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%)}
+  }
+  .mobile-sticky a{background:transparent;color:var(--ink);border-radius:var(--radius-panel)}
+  .gallery-item,.about-photo{border-radius:18px}
+}
+
+/* ---------- Movimento respeitoso ---------- */
+@media(prefers-reduced-motion:reduce){
+  .header{transition:none}
+  .button:hover{transform:none}
+  .filters button{transition:none}
+}

@@ -35,6 +35,13 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+const header = document.querySelector(".header");
+function updateHeaderState() {
+  header.classList.toggle("is-scrolled", window.scrollY > 10);
+}
+updateHeaderState();
+window.addEventListener("scroll", updateHeaderState, { passive: true });
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("visible"));
 }, { threshold: 0.12 });

@@ -1,5 +1,6 @@
-# Backup da versão anterior (não faz parte do site publicado)
+# Backups de versões anteriores (não fazem parte do site publicado)
 backup/
+backup-*/
 
 # Dependências
 node_modules/
