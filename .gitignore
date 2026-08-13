@@ -1,0 +1,20 @@
+# Backup da versão anterior (não faz parte do site publicado)
+backup/
+
+# Dependências
+node_modules/
+
+# Logs e arquivos temporários
+*.log
+npm-debug.log*
+*.tmp
+*.temp
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ambiente/segredos (caso venham a existir)
+.env
+.env.local
