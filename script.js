@@ -1,6 +1,7 @@
 const CONFIG = {
   whatsappNumber: "5511970446478",
   whatsappMessage: "Olá, Sávio! Encontrei seu site e gostaria de agendar uma avaliação.",
+  googleAdsWhatsappConversion: "AW-16686198554/n5YeCL-H8OAcEJrezJQ-",
 };
 
 const whatsappReady = /^\d{12,13}$/.test(CONFIG.whatsappNumber);
@@ -9,6 +10,13 @@ document.querySelectorAll(".js-whatsapp").forEach((link) => {
     link.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(CONFIG.whatsappMessage)}`;
     link.target = "_blank";
     link.rel = "noopener";
+    link.addEventListener("click", () => {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: CONFIG.googleAdsWhatsappConversion,
+        });
+      }
+    });
   } else {
     link.href = "#contato";
     link.addEventListener("click", () => console.info("Substitua [DDI_DDD_NUMERO] no arquivo script.js pelo WhatsApp real."));

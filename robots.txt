@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# [PREENCHER: quando o domínio final estiver definido, gerar sitemap.xml
-# e adicionar a linha "Sitemap: https://SEU-DOMINIO/sitemap.xml" aqui]
+Sitemap: https://savio-hairs.vercel.app/sitemap.xml
