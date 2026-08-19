@@ -1,8 +1,28 @@
 const CONFIG = {
   whatsappNumber: "5511970446478",
   whatsappMessage: "Olá, Sávio! Encontrei seu site e gostaria de agendar uma avaliação.",
-  googleAdsWhatsappConversion: "AW-16686198554/n5YeCL-H8OAcEJrezJQ-",
+  googleAdsWhatsappConversion: "AW-18397988052/Ji2PCNTsieQcENSJ7MRE",
+  googleAdsConversionValue: 1.0,
+  googleAdsCurrency: "BRL",
 };
+
+// A Google tag base já é carregada no index.html. Esta configuração conecta
+// o novo destino do Google Ads sem instalar uma segunda tag base no site.
+if (typeof window.gtag === "function") {
+  window.gtag("config", "AW-18397988052");
+}
+
+function gtag_report_conversion() {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "conversion", {
+      send_to: CONFIG.googleAdsWhatsappConversion,
+      value: CONFIG.googleAdsConversionValue,
+      currency: CONFIG.googleAdsCurrency,
+    });
+  }
+  return false;
+}
+window.gtag_report_conversion = gtag_report_conversion;
 
 const whatsappReady = /^\d{12,13}$/.test(CONFIG.whatsappNumber);
 document.querySelectorAll(".js-whatsapp").forEach((link) => {
@@ -11,11 +31,7 @@ document.querySelectorAll(".js-whatsapp").forEach((link) => {
     link.target = "_blank";
     link.rel = "noopener";
     link.addEventListener("click", () => {
-      if (typeof window.gtag === "function") {
-        window.gtag("event", "conversion", {
-          send_to: CONFIG.googleAdsWhatsappConversion,
-        });
-      }
+      gtag_report_conversion();
     });
   } else {
     link.href = "#contato";
