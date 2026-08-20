@@ -6,12 +6,6 @@ const CONFIG = {
   googleAdsCurrency: "BRL",
 };
 
-// A Google tag base já é carregada no index.html. Esta configuração conecta
-// o novo destino do Google Ads sem instalar uma segunda tag base no site.
-if (typeof window.gtag === "function") {
-  window.gtag("config", "AW-18397988052");
-}
-
 function gtag_report_conversion() {
   if (typeof window.gtag === "function") {
     window.gtag("event", "conversion", {
@@ -30,13 +24,25 @@ document.querySelectorAll(".js-whatsapp").forEach((link) => {
     link.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(CONFIG.whatsappMessage)}`;
     link.target = "_blank";
     link.rel = "noopener";
-    link.addEventListener("click", () => {
-      gtag_report_conversion();
-    });
   } else {
     link.href = "#contato";
     link.addEventListener("click", () => console.info("Substitua [DDI_DDD_NUMERO] no arquivo script.js pelo WhatsApp real."));
   }
+});
+
+// Um único listener evita múltiplos disparos e só registra conversão quando o
+// clique realmente aponta para o WhatsApp configurado neste site.
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a.js-whatsapp");
+  if (!link || !whatsappReady) return;
+
+  const destination = new URL(link.href, window.location.href);
+  const isConfiguredWhatsapp =
+    destination.protocol === "https:" &&
+    destination.hostname === "wa.me" &&
+    destination.pathname === `/${CONFIG.whatsappNumber}`;
+
+  if (isConfiguredWhatsapp) gtag_report_conversion();
 });
 
 const menuButton = document.querySelector(".menu-toggle");
