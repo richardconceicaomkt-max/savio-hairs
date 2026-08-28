@@ -6,6 +6,11 @@ const CONFIG = {
   googleAdsCurrency: "BRL",
 };
 
+const landingParams = new URLSearchParams(window.location.search);
+const cameFromGoogle =
+  landingParams.get("utm_source")?.toLowerCase() === "google" ||
+  landingParams.has("gclid");
+
 function gtag_report_conversion() {
   if (typeof window.gtag === "function") {
     window.gtag("event", "conversion", {
@@ -19,9 +24,13 @@ function gtag_report_conversion() {
 window.gtag_report_conversion = gtag_report_conversion;
 
 const whatsappReady = /^\d{12,13}$/.test(CONFIG.whatsappNumber);
+const initialWhatsappMessage = cameFromGoogle
+  ? "Olá, Sávio! Vim pelo Google e gostaria de agendar uma avaliação."
+  : CONFIG.whatsappMessage;
+
 document.querySelectorAll(".js-whatsapp").forEach((link) => {
   if (whatsappReady) {
-    link.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(CONFIG.whatsappMessage)}`;
+    link.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(initialWhatsappMessage)}`;
     link.target = "_blank";
     link.rel = "noopener";
   } else {
@@ -42,7 +51,12 @@ document.addEventListener("click", (event) => {
     destination.hostname === "wa.me" &&
     destination.pathname === `/${CONFIG.whatsappNumber}`;
 
-  if (isConfiguredWhatsapp) gtag_report_conversion();
+  if (isConfiguredWhatsapp) {
+    gtag_report_conversion();
+    if (typeof window.fbq === "function") {
+      window.fbq("track", "Lead");
+    }
+  }
 });
 
 const menuButton = document.querySelector(".menu-toggle");
@@ -128,7 +142,7 @@ const LANGUAGE_COPY = {
     "TRANSFORMAÇÕES REAIS":"TRANSFORMACIONES REALES","Resultados que falam por si.":"Resultados que hablan por sí solos.","Todos":"Todos","Morenas":"Morenas","Cortes":"Cortes","Ver mais no Instagram":"Ver más en Instagram",
     "Beleza não se impõe. Ela se revela.":"La belleza no se impone. Se revela.","no Google":"en Google","avaliações":"reseñas","personalizado":"personalizado","PARCEIRO OFICIAL":"SOCIO OFICIAL","Performance profissional. Cuidado que dura.":"Rendimiento profesional. Cuidado duradero.",
     "A EXPERIÊNCIA":"LA EXPERIENCIA","Do diagnóstico ao resultado.":"De la evaluación al resultado.","Conversa":"Conversación","Diagnóstico":"Evaluación","Criação":"Creación","Continuidade":"Continuidad","DÚVIDAS FREQUENTES":"PREGUNTAS FRECUENTES","Antes de agendar.":"Antes de reservar.",
-    "Como você evita um resultado diferente do que eu esperava?":"¿Cómo evitas un resultado diferente al que esperaba?","Como funciona a avaliação?":"¿Cómo funciona la evaluación?","Quanto tempo dura uma transformação?":"¿Cuánto dura una transformación?","Como saber o valor do serviço?":"¿Cómo se determina el precio?","Onde fica o salão?":"¿Dónde está el salón?",
+    "Como você evita um resultado diferente do que eu esperava?":"¿Cómo evitas un resultado diferente al que esperaba?","Como funciona a avaliação?":"¿Cómo funciona la evaluación?","Quanto tempo dura una transformação?":"¿Cuánto dura una transformación?","Como saber o valor do serviço?":"¿Cómo se determina el precio?","Onde fica o salão?":"¿Dónde está el salón?",
     "SEU NOVO CABELO COMEÇA AQUI":"TU NUEVO CABELLO EMPIEZA AQUÍ","Pronta para se transformar?":"¿Lista para transformarte?","Agendar pelo WhatsApp":"Reservar por WhatsApp","ATENDIMENTO COM HORA MARCADA":"ATENCIÓN CON CITA PREVIA","LOCALIZAÇÃO":"UBICACIÓN","HORÁRIOS":"HORARIOS","CONTATO":"CONTACTO","Como chegar":"Cómo llegar","Todos os direitos reservados.":"Todos los derechos reservados."
   }
 };
@@ -150,9 +164,15 @@ function changeLanguage(lang) {
     button.setAttribute("aria-pressed", String(selected));
   });
   const messages = {
-    pt: "Olá, Sávio! Encontrei seu site e gostaria de agendar uma avaliação.",
-    en: "Hello, Sávio! I found your website and would like to book a consultation.",
-    es: "¡Hola, Sávio! Encontré tu sitio web y me gustaría reservar una evaluación."
+    pt: cameFromGoogle
+      ? "Olá, Sávio! Vim pelo Google e gostaria de agendar uma avaliação."
+      : "Olá, Sávio! Encontrei seu site e gostaria de agendar uma avaliação.",
+    en: cameFromGoogle
+      ? "Hello, Sávio! I found you on Google and would like to book a consultation."
+      : "Hello, Sávio! I found your website and would like to book a consultation.",
+    es: cameFromGoogle
+      ? "¡Hola, Sávio! Te encontré en Google y me gustaría reservar una evaluación."
+      : "¡Hola, Sávio! Encontré tu sitio web y me gustaría reservar una evaluación."
   };
   document.querySelectorAll(".js-whatsapp").forEach((link) => { if (whatsappReady) link.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(messages[lang])}`; });
   localStorage.setItem("savio-language", lang);
