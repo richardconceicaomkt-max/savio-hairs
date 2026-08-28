@@ -1,7 +1,7 @@
 const CONFIG = {
   whatsappNumber: "5511970446478",
   whatsappMessage: "Olá, Sávio! Encontrei seu site e gostaria de agendar uma avaliação.",
-  googleAdsWhatsappConversion: "AW-18397988052/Ji2PCNTsieQcENSJ7MRE",
+  googleAdsWhatsappConversion: "AW-18397988052/gcuSCOvHkekcENSJ7MRE",
   googleAdsConversionValue: 1.0,
   googleAdsCurrency: "BRL",
 };
